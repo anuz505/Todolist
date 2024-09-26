@@ -1,6 +1,6 @@
 const Task = require("../models/tasks.model.js");
 
-async function getTasks(req, res) {
+async function GetTasks(req, res) {
   try {
     const tasks = await Task.find({});
     res.status(200).json(tasks);
@@ -43,8 +43,19 @@ async function DeleteTask(req, res) {
   try {
     const { id } = req.params;
     const task = await Task.findByIdAndDelete(id, req.body);
+    if (!task) {
+      res.status(404).json({ message: "There is no task that has this id" });
+    }
     res.status(200).json({ message: "The task is deleted" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 }
+
+module.exports = {
+  GetTasks,
+  AddTask,
+  GetsingleTask,
+  UpdateTask,
+  DeleteTask,
+};

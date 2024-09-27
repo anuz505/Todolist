@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import AddTaskForm from "./addtask.jsx";
+import "./todolist.css";
 export default function Todolist() {
   const [tasks, setTasks] = useState([]);
   const [readMoreTaskID, setReadMore] = useState(null);
@@ -9,7 +10,7 @@ export default function Todolist() {
     const fetchapi = async () => {
       try {
         const response = await axios.get("http://localhost:3000/tasks");
-        console.log("API response:", response.data); // Log the API response
+
         setTasks(response.data);
       } catch (error) {
         console.error("Error fetching the API:", error);
@@ -19,7 +20,6 @@ export default function Todolist() {
     fetchapi();
   }, []);
 
-  console.log("Tasks state:", tasks);
   const readmore = (taskId) => {
     setReadMore(readMoreTaskID === taskId ? null : taskId);
   };
@@ -34,19 +34,39 @@ export default function Todolist() {
       console.error(error);
     }
   };
+  const handleStatusChange = async (taskId, taskStatus) => {
+    try {
+      const updatedTask = {
+        status: taskStatus === "incomplete" ? "complete" : "incomplete",
+      };
+      await axios.put(`http://localhost:3000/tasks/${taskId}`, updatedTask);
+      setTasks(
+        tasks.map((task) =>
+          task._id === taskId ? { ...task, status: updatedTask.status } : task
+        )
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
-    <div>
+    <div className="todolist-container">
       <h1>Todo List</h1>
       <AddTaskForm onTaskAdded={handleTaskAdded} />
-      <ul>
+      <ul className="task-list">
         {tasks.map((task) => (
-          <li key={task._id}>
-            {task.title}
+          <li key={task._id} className="task-item">
+            <input
+              type="checkbox"
+              checked={task.status === "complete"}
+              onChange={() => handleStatusChange(task._id, task.status)}
+            />
+            <span className="task-title">{task.title}</span>
             <button onClick={() => readmore(task._id)}>
-              {readMoreTaskID === task._id ? "ReadLess" : "ReadMore"}
+              {readMoreTaskID === task._id ? "Read Less" : "Read More"}
             </button>
             {readMoreTaskID === task._id && (
-              <div>
+              <div className="task-details">
                 <p>{task.description}</p>
                 <p>{task.date}</p>
               </div>

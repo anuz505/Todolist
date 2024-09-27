@@ -3,14 +3,16 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const taskRoutes = require("./routes/task.routes.js");
+const cors = require("cors");
 dotenv.config();
+
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send(
     "why you lookin at my repository mate i haven't even finished it yet"
   );
 });
-
+app.use(cors());
 app.use("/tasks", taskRoutes);
 
 async function startServer() {

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import AddTaskForm from "./addtask.jsx";
 import "./todolist.css";
+import CustomRouter from "./router.jsx";
 export default function Todolist() {
   const [tasks, setTasks] = useState([]);
   const [readMoreTaskID, setReadMore] = useState(null);
@@ -50,31 +51,34 @@ export default function Todolist() {
     }
   };
   return (
-    <div className="todolist-container">
-      <h1>Todo List</h1>
-      <AddTaskForm onTaskAdded={handleTaskAdded} />
-      <ul className="task-list">
-        {tasks.map((task) => (
-          <li key={task._id} className="task-item">
-            <input
-              type="checkbox"
-              checked={task.status === "complete"}
-              onChange={() => handleStatusChange(task._id, task.status)}
-            />
-            <span className="task-title">{task.title}</span>
-            <button onClick={() => readmore(task._id)}>
-              {readMoreTaskID === task._id ? "Read Less" : "Read More"}
-            </button>
-            {readMoreTaskID === task._id && (
-              <div className="task-details">
-                <p>{task.description}</p>
-                <p>{task.date}</p>
-              </div>
-            )}
-            <button onClick={() => handleDelete(task._id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {" "}
+      <div className="todolist-container">
+        <h1>Todo List</h1>
+        <AddTaskForm onTaskAdded={handleTaskAdded} />
+        <ul className="task-list">
+          {tasks.map((task) => (
+            <li key={task._id} className="task-item">
+              <input
+                type="checkbox"
+                checked={task.status === "complete"}
+                onChange={() => handleStatusChange(task._id, task.status)}
+              />
+              <span className="task-title">{task.title}</span>
+              <button onClick={() => readmore(task._id)}>
+                {readMoreTaskID === task._id ? "Read Less" : "Read More"}
+              </button>
+              {readMoreTaskID === task._id && (
+                <div className="task-details">
+                  <p>{task.description}</p>
+                  <p>{task.date}</p>
+                </div>
+              )}
+              <button onClick={() => handleDelete(task._id)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Login from "./Auth/login.jsx";
 import Todolist from "./Todlist";
 import Signup from "./Auth/signup.jsx";
+import Hero from "./Hero";
 
 export default function CustomRouter() {
   return (
@@ -10,17 +11,19 @@ export default function CustomRouter() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Todolist</Link>
+            <Link to="/">Hero</Link>
             <Link to="/login">Login</Link>
             <Link to="/signup">Signup</Link>
+            <Link to="/todolist">Todolist</Link>
           </li>
         </ul>
       </nav>
 
       <Routes>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/" element={<Todolist />}></Route>
+        <Route path="/" element={<Hero />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/todolist" element={<Todolist />}></Route>
       </Routes>
     </Router>
   );

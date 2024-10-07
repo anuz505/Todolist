@@ -1,4 +1,5 @@
 const Task = require("../models/tasks.model.js");
+const User = require("../models/user.model.js");
 
 async function GetTasks(req, res) {
   try {

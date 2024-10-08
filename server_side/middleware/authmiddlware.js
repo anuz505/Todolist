@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 
 const requireAuth = (req, res, next) => {
-  const token = req.cookies.jwt;
+  const token = req.cookies.JWT;
   if (token) {
     jwt.verify(token, "Anuj Secret key", (err, decodedToken) => {
       if (err) {

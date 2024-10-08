@@ -7,18 +7,23 @@ const cors = require("cors");
 const authRouter = require("./routes/auth.routes.js");
 const cookieParser = require("cookie-parser");
 dotenv.config();
-const requireAuth = require("./middleware/authmiddlware.js");
 
 app.use(express.json());
-app.get("/", requireAuth, (req, res) => {
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Replace with your frontend domain
+    credentials: true,
+  })
+);
+app.use(cookieParser());
+
+app.use("/tasks", taskRoutes);
+app.use(authRouter);
+app.get("/", (req, res) => {
   res.send(
     "why you lookin at my repository mate i haven't even finished it yet"
   );
 });
-app.use(cors());
-app.use("/tasks", taskRoutes);
-app.use(cookieParser());
-app.use(authRouter);
 async function startServer() {
   try {
     await mongoose.connect("mongodb://127.0.0.1:27017/Todolist");

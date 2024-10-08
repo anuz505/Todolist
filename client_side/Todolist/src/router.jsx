@@ -14,7 +14,7 @@ export default function CustomRouter() {
             <Link to="/">Hero</Link>
             <Link to="/login">Login</Link>
             <Link to="/signup">Signup</Link>
-            <Link to="/todolist">Todolist</Link>
+            <Link to="/tasks">Todolist</Link>
           </li>
         </ul>
       </nav>
@@ -23,7 +23,7 @@ export default function CustomRouter() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/" element={<Hero />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/todolist" element={<Todolist />}></Route>
+        <Route path="/tasks" element={<Todolist />}></Route>
       </Routes>
     </Router>
   );

@@ -10,7 +10,9 @@ export default function Todolist() {
   useEffect(() => {
     const fetchapi = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/tasks");
+        const response = await axios.get("http://localhost:3000/tasks", {
+          withCredentials: true,
+        });
 
         setTasks(response.data);
       } catch (error) {

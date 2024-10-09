@@ -9,10 +9,14 @@ export default function Signup() {
     e.preventDefault();
     setError("");
     try {
-      const response = await axios.post("http://localhost:3000/signup", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:3000/signup",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true } //  this line to allow sending/receiving cookies
+      );
       console.log(response.data);
 
       if (response.data.user) {
@@ -42,7 +46,7 @@ export default function Signup() {
         />
         <button type="submit">Signup</button>
       </form>
-      <h1>{error}</h1>
+      <p className="error">{error}</p>
     </div>
   );
 }

@@ -16,12 +16,50 @@ body {
 
 /* Container for the Todo List */
 .todolist-container {
-  max-width: 1600px; /* Adjusted for more width */
+  max-width: 100%; /* Adjusted for more width */
   margin: 30px;
   padding: 25px;
   background-color: #fff3b0; /* Softer, lighter yellow */
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Navigation Styles */
+nav {
+  background-color: #fff3b0; /* Softer, lighter yellow */
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: flex; /* Apply flexbox to li */
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px; /* Add gap between a elements */
+  padding: 10px 15px; /* Add padding for better spacing */
+  background-color: #fff3b0; /* Background color for li elements */
+  border-radius: 8px; /* Rounded corners for li elements */
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #2c2a1c; /* Dark earthy color for contrast */
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ff9800; /* Warm orange on hover */
 }
 
 /* Todo List Heading */
@@ -134,5 +172,23 @@ button + button:hover {
 
   .task-item {
     padding: 15px;
+  }
+  nav {
+    padding: 10px 20px;
+  }
+
+  nav ul li {
+    flex-direction: column; /* Stack links vertically on smaller screens */
+    gap: 10px; /* Reduce gap between a elements */
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  nav ul li a {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+
+  h1 {
+    font-size: 2.2rem; /* Adjust heading size for smaller screens */
+    margin-bottom: 25px; /* Adjust margin for smaller screens */
   }
 }

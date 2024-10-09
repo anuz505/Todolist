@@ -46,7 +46,7 @@ export default function Login() {
         />
         <button type="submit">Login</button>
       </form>
-      <h1>{error}</h1>
+      <p className="error">{error}</p>
     </div>
   );
 }

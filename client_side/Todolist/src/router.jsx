@@ -5,7 +5,7 @@ import Login from "./Auth/login.jsx";
 import Todolist from "./Todlist";
 import Signup from "./Auth/signup.jsx";
 import Hero from "./Hero";
-
+import axios from "axios";
 function ProtectedRoute({ element }) {
   const navigate = useNavigate();
 
@@ -19,6 +19,19 @@ function ProtectedRoute({ element }) {
   }, [navigate]);
   return element;
 }
+const handleLogout = async () => {
+  try {
+    await axios.post(
+      "http://localhost:3000/logout",
+      {},
+      { withCredentials: true }
+    );
+    console.log("Logged out successfully");
+    // Optionally, you can redirect the user to the login page or clear the tasks
+  } catch (error) {
+    console.error("Error logging out:", error);
+  }
+};
 
 export default function CustomRouter() {
   return (
@@ -30,6 +43,9 @@ export default function CustomRouter() {
             <Link to="/login">Login</Link>
             <Link to="/signup">Signup</Link>
             <Link to="/tasks">Todolist</Link>
+            <Link to="/#" onClick={handleLogout}>
+              Logout
+            </Link>
           </li>
         </ul>
       </nav>
@@ -42,6 +58,7 @@ export default function CustomRouter() {
           path="/tasks"
           element={<ProtectedRoute element={<Todolist />} />}
         ></Route>
+        <Route path="/logout" element={<Hero />}></Route>
       </Routes>
     </Router>
   );

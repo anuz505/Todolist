@@ -6,7 +6,7 @@ const taskRoutes = require("./routes/task.routes.js");
 const cors = require("cors");
 const authRouter = require("./routes/auth.routes.js");
 const cookieParser = require("cookie-parser");
-const requireAuth = require("./middleware/authmiddlware.js");
+const { requireAuth } = require("./middleware/authmiddlware.js");
 dotenv.config();
 app.use(cookieParser());
 
@@ -20,7 +20,9 @@ app.use(
 
 app.use("/tasks", taskRoutes);
 app.use(authRouter);
-
+app.get("/check-auth", requireAuth, (req, res) => {
+  res.status(200).json({ message: "Authenticated" });
+});
 async function startServer() {
   try {
     await mongoose.connect("mongodb://127.0.0.1:27017/Todolist");

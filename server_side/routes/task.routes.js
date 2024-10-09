@@ -13,7 +13,7 @@ const {
 } = require("../controllers/tasks.controller.js");
 router.get("/", requireAuth, GetTasks);
 router.get("/:id", requireAuth, GetsingleTask);
-router.post("/", addUserToBody, AddTask);
+router.post("/", requireAuth, addUserToBody, AddTask);
 router.put("/:id", requireAuth, UpdateTask);
 router.delete("/:id", requireAuth, DeleteTask);
 

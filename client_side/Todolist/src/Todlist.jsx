@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import AddTaskForm from "./addtask.jsx";
 import "./todolist.css";
-import CustomRouter from "./router.jsx";
 export default function Todolist() {
   const [tasks, setTasks] = useState([]);
   const [readMoreTaskID, setReadMore] = useState(null);

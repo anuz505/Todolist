@@ -8,6 +8,7 @@ const authRouter = require("./routes/auth.routes.js");
 const cookieParser = require("cookie-parser");
 const requireAuth = require("./middleware/authmiddlware.js");
 dotenv.config();
+app.use(cookieParser());
 
 app.use(express.json());
 app.use(
@@ -16,9 +17,8 @@ app.use(
     credentials: true,
   })
 );
-app.use(cookieParser());
 
-app.use("/tasks", requireAuth, taskRoutes);
+app.use("/tasks", taskRoutes);
 app.use(authRouter);
 
 async function startServer() {

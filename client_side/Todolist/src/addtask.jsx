@@ -10,7 +10,12 @@ export default function AddTaskForm({ onTaskAdded }) {
     e.preventDefault();
     try {
       const newTask = { title, description, date };
-      const response = await axios.post("http://localhost:3000/tasks", newTask);
+      const response = await axios.post(
+        "http://localhost:3000/tasks",
+
+        newTask,
+        { withCredentials: true }
+      );
       onTaskAdded(response.data);
       setTitle("");
       setDescription("");

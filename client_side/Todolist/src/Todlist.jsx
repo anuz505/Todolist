@@ -31,7 +31,9 @@ export default function Todolist() {
   };
   const handleDelete = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:3000/tasks/${taskId}`);
+      await axios.delete(`http://localhost:3000/tasks/${taskId}`, {
+        withCredentials: true,
+      });
       setTasks(tasks.filter((task) => task._id !== taskId));
     } catch (error) {
       console.error(error);
@@ -42,7 +44,9 @@ export default function Todolist() {
       const updatedTask = {
         status: taskStatus === "incomplete" ? "complete" : "incomplete",
       };
-      await axios.put(`http://localhost:3000/tasks/${taskId}`, updatedTask);
+      await axios.put(`http://localhost:3000/tasks/${taskId}`, updatedTask, {
+        withCredentials: true,
+      });
       setTasks(
         tasks.map((task) =>
           task._id === taskId ? { ...task, status: updatedTask.status } : task

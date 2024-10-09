@@ -12,6 +12,7 @@ async function GetTasks(req, res) {
 
 async function AddTask(req, res) {
   try {
+    console.log(req.body);
     const tasks = await Task.create(req.body);
     res.status(200).json(tasks);
   } catch (error) {

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Login from "./Auth/login.jsx";
 import Todolist from "./Todlist";
-import Signup from "./Auth/signup.jsx";
+import Signup from "./Auth/Signup.jsx";
 import Hero from "./Hero";
 import axios from "axios";
 

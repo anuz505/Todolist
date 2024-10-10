@@ -25,7 +25,7 @@ app.get("/check-auth", requireAuth, (req, res) => {
 });
 async function startServer() {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/Todolist");
+    await mongoose.connect(process.env.ConnectionString);
     console.log("The server is connected to the database");
     app.listen(process.env.PORT, () => {
       console.log(`The Server is running on ${process.env.PORT}`);

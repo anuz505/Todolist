@@ -25,7 +25,7 @@ function ProtectedRoute({ element }) {
 const handleLogout = async (setIsAuthenticated) => {
   try {
     await axios.post(
-      "http://localhost:3000/logout",
+      "https://taskmeifyoucan25.vercel.app/?vercelToolbarCode=_a5myzXVK9C-reK/logout",
       {},
       { withCredentials: true }
     );

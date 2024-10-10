@@ -9,9 +9,12 @@ export default function Todolist() {
   useEffect(() => {
     const fetchapi = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/tasks", {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          "https://taskmeifyoucan25.vercel.app/?vercelToolbarCode=_a5myzXVK9C-reK/tasks",
+          {
+            withCredentials: true,
+          }
+        );
 
         setTasks(response.data);
       } catch (error) {
@@ -30,9 +33,12 @@ export default function Todolist() {
   };
   const handleDelete = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:3000/tasks/${taskId}`, {
-        withCredentials: true,
-      });
+      await axios.delete(
+        `https://taskmeifyoucan25.vercel.app/?vercelToolbarCode=_a5myzXVK9C-reK/tasks/${taskId}`,
+        {
+          withCredentials: true,
+        }
+      );
       setTasks(tasks.filter((task) => task._id !== taskId));
     } catch (error) {
       console.error(error);
@@ -43,9 +49,13 @@ export default function Todolist() {
       const updatedTask = {
         status: taskStatus === "incomplete" ? "complete" : "incomplete",
       };
-      await axios.put(`http://localhost:3000/tasks/${taskId}`, updatedTask, {
-        withCredentials: true,
-      });
+      await axios.put(
+        `https://taskmeifyoucan25.vercel.app/?vercelToolbarCode=_a5myzXVK9C-reK/tasks/${taskId}`,
+        updatedTask,
+        {
+          withCredentials: true,
+        }
+      );
       setTasks(
         tasks.map((task) =>
           task._id === taskId ? { ...task, status: updatedTask.status } : task

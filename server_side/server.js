@@ -13,7 +13,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-    origin: "", // Replace with your frontend domain
+    origin: "https://todolist-delta-dusky.vercel.app", // Replace with your frontend domain
     credentials: true,
   })
 );

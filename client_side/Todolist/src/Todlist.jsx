@@ -10,7 +10,7 @@ export default function Todolist() {
     const fetchapi = async () => {
       try {
         const response = await axios.get(
-          "https://taskmeifyoucan25.vercel.app/?vercelToolbarCode=_a5myzXVK9C-reK/tasks",
+          "https://taskmeifyoucan25.vercel.app/tasks",
           {
             withCredentials: true,
           }
@@ -34,7 +34,7 @@ export default function Todolist() {
   const handleDelete = async (taskId) => {
     try {
       await axios.delete(
-        `https://taskmeifyoucan25.vercel.app/?vercelToolbarCode=_a5myzXVK9C-reK/tasks/${taskId}`,
+        `https://taskmeifyoucan25.vercel.app/tasks/${taskId}`,
         {
           withCredentials: true,
         }
@@ -50,7 +50,7 @@ export default function Todolist() {
         status: taskStatus === "incomplete" ? "complete" : "incomplete",
       };
       await axios.put(
-        `https://taskmeifyoucan25.vercel.app/?vercelToolbarCode=_a5myzXVK9C-reK/tasks/${taskId}`,
+        `https://taskmeifyoucan25.vercel.app/tasks/${taskId}`,
         updatedTask,
         {
           withCredentials: true,

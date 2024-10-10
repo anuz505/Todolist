@@ -10,7 +10,7 @@ export default function Login() {
     setError("");
     try {
       const response = await axios.post(
-        "https://taskmeifyoucan25.vercel.app/?vercelToolbarCode=_a5myzXVK9C-reK/login",
+        "https://taskmeifyoucan25.vercel.app/login",
         {
           email,
           password,

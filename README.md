@@ -17,6 +17,13 @@ List It and Forget It is a simple to-do list application built using the MERN st
 - **Authentication:** JWT (JSON Web Tokens), bcryptjs
 - **Styling:** CSS (for styling components)
 
+## Usage
+
+- **Signup:** Create a new account with a unique username and password.
+- **Login:** Log in to your account securely.
+- **Add Task:** Create a new task by entering the task description and pressing enter.
+- **Delete Task:** Delete a task by clicking on the delete icon.
+- **Mark Task Complete:** Toggle the completion status of a task by clicking on the checkbox.
 ## Installation
 
 To run this project locally, clone the repository, install dependencies, and start both frontend and backend servers.
@@ -33,8 +40,23 @@ To run this project locally, clone the repository, install dependencies, and sta
    cd ../server
    npm install
 
-3. EnvironmentVariables
-```bash
-PORT=5000
-MONGODB_URI=<your-mongodb-uri>
+2. Environment Variables
+   ```bash
+   PORT=5000
+   MONGODB_URI=<your-mongodb-uri>
+4. Start the frontend and backend servers
+      ```bash
+      npm run dev
 
+##Screenshots
+### Landing Page
+![landingpage](Screenshots/hero.PNG)
+
+### Login Page
+![Login](Screenshots/login.PNG)
+
+### Sign up Page
+![Sign up](Screenshots/signup.PNG)
+
+### Task List
+![Task List](Screenshots/todolist.PNG)

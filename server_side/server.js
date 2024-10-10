@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: "https://todolist-delta-dusky.vercel.app", // Replace with your frontend domain
+    methods: { POST, GET },
     credentials: true,
   })
 );

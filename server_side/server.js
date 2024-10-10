@@ -18,7 +18,9 @@ app.use(
     credentials: true,
   })
 );
-
+app.get("/", (req, res) => {
+  res.send("hello");
+});
 app.use("/tasks", taskRoutes);
 app.use(authRouter);
 app.get("/check-auth", requireAuth, (req, res) => {

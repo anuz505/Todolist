@@ -15,7 +15,7 @@ function ProtectedRoute({ element }) {
       .split(";")
       .find((row) => row.startsWith("jwt"));
     if (!token) {
-      navigate("/login");
+      navigate("/");
     }
   }, [navigate]);
 

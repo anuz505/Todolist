@@ -26,7 +26,7 @@ const {
   post_signup,
   login_post,
   post_logout,
-} = require("../controllers/auth.controller");
+} = require("./controllers/auth.controller.js");
 app.post("/signup", post_signup);
 app.post("/login", login_post);
 app.post("/logout", post_logout);

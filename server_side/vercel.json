@@ -11,10 +11,7 @@
       "src": "/tasks",
       "dest": "server.js"
     },
-    {
-      "src": "/auth/(.*)",
-      "dest": "server.js"
-    },
+
     {
       "src": "/check-auth",
       "dest": "server.js"

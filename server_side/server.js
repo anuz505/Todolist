@@ -13,7 +13,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://taskmeifyoucan25.vercel.app/", // Replace with your frontend domain
+    origin: "https://todolist-delta-dusky.vercel.app", // Replace with your frontend domain
     methods: ["POST", "GET", "PUT", "Delete"], // Corrected syntax
     credentials: true,
   })

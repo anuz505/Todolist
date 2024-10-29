@@ -13,11 +13,12 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://todolist-delta-dusky.vercel.app/", // Replace with your frontend domain
-    methods: ["POST", "GET", "PUT", "Delete"], // Corrected syntax
+    origin: "https://todolist-delta-dusky.vercel.app", // No trailing slash
+    methods: ["POST", "GET", "PUT", "DELETE"], // Consistent capitalization
     credentials: true,
   })
 );
+
 app.get("/", (req, res) => {
   res.send("hello");
 });

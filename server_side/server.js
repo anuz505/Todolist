@@ -22,15 +22,7 @@ app.get("/", (req, res) => {
   res.send("hello");
 });
 app.use("/tasks", taskRoutes);
-const {
-  post_signup,
-  login_post,
-  post_logout,
-} = require("./controllers/auth.controller.js");
-app.post("/signup", post_signup);
-app.post("/login", login_post);
-app.post("/logout", post_logout);
-// app.use(authRouter);
+app.use(authRouter);
 app.get("/check-auth", requireAuth, (req, res) => {
   res.status(200).json({ message: "Authenticated" });
 });

@@ -15,6 +15,13 @@ app.use(
   cors({
     origin: "https://todolist-delta-dusky.vercel.app", // No trailing slash
     methods: ["POST", "GET", "PUT", "DELETE"], // Consistent capitalization
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Cache-Control",
+      "Expires",
+      "pragma",
+    ],
     credentials: true,
   })
 );
